@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title></title>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <form action="" method="POST" role="form">
+            
+        <div class="row">
+         <div class="col-6">
+           <input type="text" class="form-control" id="input" placeholder="Enter start address..."> 
+           <input type="text" class="form-control" id="input2" placeholder="Enter end address....">
+        </div>
+        <button type="submit" class="btn btn-primary" id = "searchButton">Submit</button>
+        </div>
+      </form>
+    <style>
+ #map {
+        width: 100%;
+        height: 400px;
+     }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+
+
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {lat: 44.540, lng: -78.546},
+            zoom: 10
+        });
+      }
+      $('#searchButton').on('click', function(){
+    $('#input').text('');
+    $('#input2').text('');
+    
+
+    var Search = $('#input').val().trim();
+    var Search2 = $('#input2').val().trim();
+    gifArray.push(gifSearch);
+
+    appendNewButton(gifSearch);
+
+    var queryURL = "http://maps.googleapis.com/maps/api/directions/" + Search + "?" + Search2 ;
+
+    $.ajax({
+              url: queryURL,
+              method: 'GET'
+          })
+          .done(function(response) {
+            console.log(response);
+
+            var results = document.getElementById('map');
+
+            
+              });
+
+
+    return false;
+  });
+
+
+      $(document).on('click');
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFWpSBx9Ge67AqipnQX95I60OyRvwAWmE&callback=initMap">
+    </script>
+  </body>
+</html>
+
+<!-- http://maps.googleapis.com/maps/api/directions/outputFormat?parameters -->
